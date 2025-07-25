@@ -1,0 +1,33 @@
+<entities >
+  <entity name="productpricelevel" displayname="Price List Item" etc="1026" primaryidfield="productpricelevelid" primarynamefield="productidname" disableplugins="false">
+    <fields>
+      <field displayname="(Deprecated) Stage Id" name="stageid" type="guid" />
+      <field displayname="(Deprecated) Traversed Path" name="traversedpath" type="string" />
+      <field displayname="Amount" name="amount" type="money" />
+      <field displayname="Amount (Base)" name="amount_base" type="money" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Currency" name="transactioncurrencyid" type="entityreference" lookupType="transactioncurrency" />
+      <field displayname="Discount List" name="discounttypeid" type="entityreference" lookupType="discounttype" />
+      <field displayname="Exchange Rate" name="exchangerate" type="decimal" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Percentage" name="percentage" type="decimal" />
+      <field displayname="Price List" name="pricelevelid" type="entityreference" lookupType="pricelevel" />
+      <field displayname="Pricing Method" name="pricingmethodcode" type="optionsetvalue" />
+      <field displayname="Process Id" name="processid" type="guid" />
+      <field displayname="Product" name="productid" type="entityreference" lookupType="product" />
+      <field displayname="Product Price List" name="productpricelevelid" type="guid" primaryKey="true" />
+      <field displayname="Quantity Selling Option" name="quantitysellingcode" type="optionsetvalue" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Rounding Amount" name="roundingoptionamount" type="money" />
+      <field displayname="Rounding Amount (Base)" name="roundingoptionamount_base" type="money" />
+      <field displayname="Rounding Option" name="roundingoptioncode" type="optionsetvalue" />
+      <field displayname="Rounding Policy" name="roundingpolicycode" type="optionsetvalue" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Unit" name="uomid" type="entityreference" lookupType="uom" />
+      <field displayname="Unit Schedule ID" name="uomscheduleid" type="entityreference" lookupType="uomschedule" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

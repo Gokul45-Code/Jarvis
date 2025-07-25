@@ -1,0 +1,37 @@
+<entities >
+  <entity name="jarvis_brand" displayname="Brand" etc="10957" primaryidfield="jarvis_brandid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="Brand" name="jarvis_brandid" type="guid" primaryKey="true" />
+      <field displayname="Business Partner" name="jarvis_account" type="entityreference" lookupType="account" customfield="true" />
+      <field displayname="CDB Brand Code" name="jarvis_cdbbrandcode" type="string" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="CTDI BA Code" name="jarvis_ctdibacode" type="string" customfield="true" />
+      <field displayname="CTDI Brand Code" name="jarvis_ctdibrandcode" type="string" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Incident Nature" name="jarvis_incidentnature" type="entityreference" lookupType="jarvis_incidentnature" customfield="true" />
+      <field displayname="Mercurius Brand Code" name="jarvis_mercuriusbrandcode" type="string" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Service Line" name="jarvis_serviceline" type="entityreference" lookupType="jarvis_serviceline" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="VDA Brand Code" name="jarvis_vdabrandcode" type="string" customfield="true" />
+      <field displayname="VDA Company Code" name="jarvis_vdacompanycode" type="string" customfield="true" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships>
+      <relationship name="jarvis_incidentnature_jarvis_brand" manyToMany="true" isreflexive="false" relatedEntityName="jarvis_incidentnature_jarvis_brand" m2mTargetEntity="jarvis_incidentnature" m2mTargetEntityPrimaryKey="jarvis_incidentnatureid" />
+    </relationships>
+  </entity>
+</entities>

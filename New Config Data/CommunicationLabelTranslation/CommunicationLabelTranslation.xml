@@ -1,0 +1,28 @@
+<entities >
+  <entity name="jarvis_communicationlabeltranslation" displayname="Communication Label Translation" etc="11073" primaryidfield="jarvis_communicationlabeltranslationid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="Communication Label Translation" name="jarvis_communicationlabeltranslationid" type="guid" primaryKey="true" />
+      <field displayname="Communication Place Holder" name="jarvis_communicationplaceholder" type="entityreference" lookupType="jarvis_communicationplaceholder" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Label Translation" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="Language (Jarvis)" name="jarvis_language" type="entityreference" lookupType="jarvis_language" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

@@ -1,0 +1,38 @@
+<entities >
+  <entity name="jarvis_warranty" displayname="GOP - Warranty" etc="10991" primaryidfield="jarvis_warrantyid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="Brand" name="jarvis_brand" type="entityreference" lookupType="jarvis_brand" customfield="true" />
+      <field displayname="Case Location" name="jarvis_caselocation" type="optionsetvalue" customfield="true" />
+      <field displayname="Country" name="jarvis_country" type="entityreference" lookupType="jarvis_country" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Currency" name="transactioncurrencyid" type="entityreference" lookupType="transactioncurrency" />
+      <field displayname="Exchange Rate" name="exchangerate" type="decimal" />
+      <field displayname="GOP Amount" name="jarvis_gopamount" type="money" customfield="true" />
+      <field displayname="GOP Amount (Base)" name="jarvis_gopamount_base" type="money" customfield="true" />
+      <field displayname="GOP Auto-approved" name="jarvis_gopautoapproved" type="bool" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Mileage Limit" name="jarvis_mileagelimit" type="decimal" customfield="true" />
+      <field displayname="Mileage Unit" name="jarvis_mileageunit" type="entityreference" lookupType="jarvis_mileage" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Vehicle Model" name="jarvis_vehiclemodel" type="string" customfield="true" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+      <field displayname="Warranty" name="jarvis_warrantyid" type="guid" primaryKey="true" />
+      <field displayname="Warranty year" name="jarvis_warrantyyear" type="number" customfield="true" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

@@ -1,0 +1,42 @@
+<entities >
+  <entity name="jarvis_configurationjarvis" displayname="Configuration (Jarvis)" etc="10963" primaryidfield="jarvis_configurationjarvisid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="City" name="jarvis_city" type="string" customfield="true" />
+      <field displayname="Configuration (Jarvis)" name="jarvis_configurationjarvisid" type="guid" primaryKey="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Currency" name="transactioncurrencyid" type="entityreference" lookupType="transactioncurrency" />
+      <field displayname="Currency" name="jarvis_currency" type="entityreference" lookupType="transactioncurrency" customfield="true" />
+      <field displayname="Exchange Rate" name="exchangerate" type="decimal" />
+      <field displayname="Home Dealer" name="jarvis_homedealer" type="entityreference" lookupType="product" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="International RD" name="jarvis_internationalfee" type="entityreference" lookupType="product" customfield="true" />
+      <field displayname="Invoice Country" name="jarvis_invoicecountry" type="entityreference" lookupType="jarvis_country" customfield="true" />
+      <field displayname="Invoice Name" name="jarvis_invoicename" type="string" customfield="true" />
+      <field displayname="Invoice Service Line" name="jarvis_invoiceserviceline" type="entityreference" lookupType="jarvis_serviceline" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="National RD" name="jarvis_nationalfee" type="entityreference" lookupType="product" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Service Fee" name="jarvis_servicefee" type="money" customfield="true" />
+      <field displayname="Service Fee (Base)" name="jarvis_servicefee_base" type="money" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Street" name="jarvis_street" type="string" customfield="true" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Type" name="jarvis_type" type="optionsetvaluecollection" customfield="true" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="VAT Number" name="jarvis_vatnumber" type="string" customfield="true" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+      <field displayname="ZIP/Postal code" name="jarvis_zippostalcode" type="string" customfield="true" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

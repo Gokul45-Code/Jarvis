@@ -1,0 +1,40 @@
+<entities >
+  <entity name="msdyn_incidenttype" displayname="Incident Type" etc="10641" primaryidfield="msdyn_incidenttypeid" primarynamefield="msdyn_name" disableplugins="false">
+    <fields>
+      <field displayname="Brand" name="jarvis_brand" type="entityreference" lookupType="jarvis_brand" customfield="true" />
+      <field displayname="Brand related" name="jarvis_brandrelated" type="bool" customfield="true" />
+      <field displayname="Copy Incident Items to Agreement" name="msdyn_copyincidentitemstoagreement" type="bool" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Default Work Order Type" name="msdyn_defaultworkordertype" type="entityreference" lookupType="msdyn_workordertype" customfield="true" />
+      <field displayname="Description" name="msdyn_description" type="string" customfield="true" />
+      <field displayname="Estimated Duration" name="msdyn_estimatedduration" type="number" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Incident Type" name="msdyn_incidenttypeid" type="guid" primaryKey="true" />
+      <field displayname="Last Calculated Time" name="msdyn_lastcalculatedtime" type="datetime" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="msdyn_name" type="string" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Resolution Required on Work Order Completion" name="msdyn_resolutionrequiredonwocompletion" type="bool" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Suggested Duration" name="msdyn_suggestedduration" type="number" customfield="true" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Trade" name="msdyn_trade" type="entityreference" lookupType="msdyn_trade" customfield="true" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships>
+      <relationship name="msdyn_msdyn_incidenttype_knowledgebaserec" manyToMany="true" isreflexive="false" relatedEntityName="msdyn_msdyn_incidenttype_knowledgebaserec" m2mTargetEntity="knowledgebaserecord" m2mTargetEntityPrimaryKey="knowledgebaserecordid" />
+      <relationship name="msdyn_msdyn_incidenttype_knowledgearticle" manyToMany="true" isreflexive="false" relatedEntityName="msdyn_msdyn_incidenttype_knowledgearticle" m2mTargetEntity="knowledgearticle" m2mTargetEntityPrimaryKey="knowledgearticleid" />
+      <relationship name="jarvis_incident_msdyn_incidenttype" manyToMany="true" isreflexive="false" relatedEntityName="jarvis_incident_msdyn_incidenttype" m2mTargetEntity="incident" m2mTargetEntityPrimaryKey="incidentid" />
+    </relationships>
+  </entity>
+</entities>

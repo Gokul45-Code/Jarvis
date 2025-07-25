@@ -1,0 +1,34 @@
+<entities >
+  <entity name="jarvis_vehiclefuelpowertype" displayname="Vehicle - Fuel/Power Type" etc="11110" primaryidfield="jarvis_vehiclefuelpowertypeid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Family Description" name="jarvis_familydescription" type="string" customfield="true" />
+      <field displayname="Family ID" name="jarvis_familyid" type="string" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Priority" name="jarvis_priority" type="number" customfield="true" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Symbol" name="jarvis_symbol" type="string" customfield="true" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Variant Description" name="jarvis_variantdescription" type="string" customfield="true" />
+      <field displayname="Variant ID" name="jarvis_variantid" type="string" customfield="true" />
+      <field displayname="Vehicle - Fuel/Power Type" name="jarvis_vehiclefuelpowertypeid" type="guid" primaryKey="true" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships>
+      <relationship name="jarvis_incidentnature_jarvis_vehiclefue" manyToMany="true" isreflexive="false" relatedEntityName="jarvis_incidentnature_jarvis_vehiclefue" m2mTargetEntity="jarvis_incidentnature" m2mTargetEntityPrimaryKey="jarvis_incidentnatureid" />
+    </relationships>
+  </entity>
+</entities>

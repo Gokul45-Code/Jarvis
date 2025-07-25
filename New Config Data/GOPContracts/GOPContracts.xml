@@ -1,0 +1,37 @@
+<entities >
+  <entity name="jarvis_contract" displayname="GOP Contract" etc="10988" primaryidfield="jarvis_contractid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="[DELETE] Case Category" name="jarvis_casecategory" type="optionsetvalue" customfield="true" />
+      <field displayname="[DELETE] Regional case?" name="jarvis_regionalcase" type="bool" customfield="true" />
+      <field displayname="Brand" name="jarvis_brand" type="entityreference" lookupType="jarvis_brand" customfield="true" />
+      <field displayname="Case Location" name="jarvis_caselocation" type="optionsetvalue" customfield="true" />
+      <field displayname="Contract" name="jarvis_contractid" type="guid" primaryKey="true" />
+      <field displayname="Country" name="jarvis_country" type="entityreference" lookupType="jarvis_country" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Currency" name="transactioncurrencyid" type="entityreference" lookupType="transactioncurrency" />
+      <field displayname="Exchange Rate" name="exchangerate" type="decimal" />
+      <field displayname="GOP Amount" name="jarvis_gopamount" type="money" customfield="true" />
+      <field displayname="GOP Amount (Base)" name="jarvis_gopamount_base" type="money" customfield="true" />
+      <field displayname="GOP Auto-approved" name="jarvis_gopautoapproved" type="bool" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Type" name="jarvis_type" type="optionsetvalue" customfield="true" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

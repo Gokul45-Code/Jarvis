@@ -1,0 +1,21 @@
+<entities >
+  <entity name="transactioncurrency" displayname="Currency" etc="9105" primaryidfield="transactioncurrencyid" primarynamefield="currencyname" disableplugins="false">
+    <fields>
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Currency Code" name="isocurrencycode" type="string" />
+      <field displayname="Currency Name" name="currencyname" type="string" />
+      <field displayname="Currency Precision" name="currencyprecision" type="number" />
+      <field displayname="Currency Symbol" name="currencysymbol" type="string" />
+      <field displayname="Entity Image" name="entityimage" type="imagedata" />
+      <field displayname="Entity Image Id" name="entityimageid" type="guid" />
+      <field displayname="Exchange Rate" name="exchangerate" type="decimal" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Transaction Currency" name="transactioncurrencyid" type="guid" primaryKey="true" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

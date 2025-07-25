@@ -1,0 +1,50 @@
+<entities >
+  <entity name="jarvis_language" displayname="Language (OneCase)" etc="10971" primaryidfield="jarvis_languageid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="[DELETE] Credit Card Currency" name="jarvis_jarvis_language_transactioncurrency" type="entityreference" lookupType="transactioncurrency" customfield="true" />
+      <field displayname="[DELETE] Credit Card VAT" name="jarvis_creditcardvat" type="entityreference" lookupType="jarvis_vat" customfield="true" />
+      <field displayname="[DELETE] ISO - Language Code (long)" name="cr175_isolanguagecodelong" type="string" customfield="true" />
+      <field displayname="[DELETE] ISO Language Name" name="cr175_isolanguagename" type="string" customfield="true" />
+      <field displayname="[DELETE] ISO-2 Language Code " name="cr175_iso2languagecode" type="string" customfield="true" />
+      <field displayname="[DELETE] ISO-3 Language Code " name="cr175_iso3languagecode" type="string" customfield="true" />
+      <field displayname="[DELETE] ISO-3 Language Code (en)" name="cr175_iso3languagecodeen" type="string" customfield="true" />
+      <field displayname="BD_CC_Language" name="jarvis_bd_cc_language" type="string" customfield="true" />
+      <field displayname="BD_CC_Language_Choice" name="jarvis_bd_cc_language_choice" type="bool" customfield="true" />
+      <field displayname="BD_DRIVER_Language" name="jarvis_bd_driver_language" type="string" customfield="true" />
+      <field displayname="BD_DRIVER_Language_Choice" name="jarvis_bd_driver_language_choice" type="bool" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Default" name="jarvis_default" type="bool" customfield="true" />
+      <field displayname="Display Value - Mercurius" name="jarvis_displayvaluemercurius" type="string" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="ISO Language Code (long)" name="jarvis_isolanguagecodelong" type="string" customfield="true" />
+      <field displayname="ISO Language Name" name="jarvis_isolanguagename" type="string" customfield="true" />
+      <field displayname="ISO-2 Language Code (639-1)" name="jarvis_iso2languagecode6391" type="string" customfield="true" />
+      <field displayname="ISO-3 Language Code (639-2/B)" name="jarvis_iso3languagecode6392b" type="string" customfield="true" />
+      <field displayname="ISO-3 Language Code (639-2/T)" name="jarvis_iso3languagecode6392t" type="string" customfield="true" />
+      <field displayname="Language" name="jarvis_languageid" type="guid" primaryKey="true" />
+      <field displayname="Mercurius Language Code" name="jarvis_mercuriuslanguagecode" type="string" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Monitor Country" name="jarvis_monitorcountry" type="entityreference" lookupType="jarvis_country" customfield="true" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Used for Volvo Pay?" name="jarvis_usedforvolvopay" type="bool" customfield="true" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships>
+      <relationship name="jarvis_country_jarvis_language" manyToMany="true" isreflexive="false" relatedEntityName="jarvis_country_jarvis_language" m2mTargetEntity="jarvis_country" m2mTargetEntityPrimaryKey="jarvis_countryid" />
+      <relationship name="jarvis_contact_jarvis_language" manyToMany="true" isreflexive="false" relatedEntityName="jarvis_contact_jarvis_language" m2mTargetEntity="contact" m2mTargetEntityPrimaryKey="contactid" />
+    </relationships>
+  </entity>
+</entities>

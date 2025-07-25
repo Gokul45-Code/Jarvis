@@ -1,0 +1,40 @@
+<entities >
+  <entity name="jarvis_country" displayname="Country" etc="10965" primaryidfield="jarvis_countryid" primarynamefield="jarvis_name" disableplugins="false">
+    <fields>
+      <field displayname="Country" name="jarvis_countryid" type="guid" primaryKey="true" />
+      <field displayname="Country Code (Phone)" name="jarvis_countrycodephone" type="string" customfield="true" />
+      <field displayname="Created By" name="createdby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created By (Delegate)" name="createdonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Created On" name="createdon" type="datetime" />
+      <field displayname="Currency" name="transactioncurrencyid" type="entityreference" lookupType="transactioncurrency" />
+      <field displayname="Exchange Rate" name="exchangerate" type="decimal" />
+      <field displayname="GOP Standard Amount" name="jarvis_gopstandardamount" type="money" customfield="true" />
+      <field displayname="GOP Standard Amount (Base)" name="jarvis_gopstandardamount_base" type="money" customfield="true" />
+      <field displayname="Import Sequence Number" name="importsequencenumber" type="number" />
+      <field displayname="ISO-2 Country Code " name="jarvis_iso2countrycode" type="string" customfield="true" />
+      <field displayname="ISO-3 Country Code " name="jarvis_iso3countrycode" type="string" customfield="true" />
+      <field displayname="Mileage Unit" name="jarvis_mileageunit" type="entityreference" lookupType="jarvis_mileage" customfield="true" />
+      <field displayname="Modified By" name="modifiedby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified By (Delegate)" name="modifiedonbehalfby" type="entityreference" lookupType="systemuser" />
+      <field displayname="Modified On" name="modifiedon" type="datetime" />
+      <field displayname="Name" name="jarvis_name" type="string" customfield="true" />
+      <field displayname="National Towing Partner" name="jarvis_nationaltowingpartner" type="entityreference" lookupType="account" customfield="true" />
+      <field displayname="Owner" name="ownerid" type="owner" />
+      <field displayname="Owning Business Unit" name="owningbusinessunit" type="entityreference" lookupType="businessunit" />
+      <field displayname="Owning Team" name="owningteam" type="entityreference" lookupType="team" />
+      <field displayname="Owning User" name="owninguser" type="entityreference" lookupType="systemuser" />
+      <field displayname="Record Created On" name="overriddencreatedon" type="datetime" />
+      <field displayname="Retail Country ID" name="jarvis_retailcountryid" type="number" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field displayname="Time Zone Rule Version Number" name="timezoneruleversionnumber" type="number" />
+      <field displayname="Towing SLA" name="jarvis_towingsla" type="optionsetvalue" customfield="true" />
+      <field displayname="UN Country Code " name="jarvis_uncountrycode" type="string" customfield="true" />
+      <field displayname="UTC Conversion Time Zone Code" name="utcconversiontimezonecode" type="number" />
+      <field displayname="Version Number" name="versionnumber" type="bigint" />
+    </fields>
+    <relationships>
+      <relationship name="jarvis_region_jarvis_country" manyToMany="true" isreflexive="false" relatedEntityName="jarvis_region_jarvis_country" m2mTargetEntity="jarvis_region" m2mTargetEntityPrimaryKey="jarvis_regionid" />
+    </relationships>
+  </entity>
+</entities>
