@@ -1,0 +1,131 @@
+﻿Refresh([@'Business Partners']);
+If(
+    !IsBlankOrError(First(ModelDrivenFormIntegration.Data).ItemId),
+    Set(
+        varBusinessPartnerId,
+        GUID(First(ModelDrivenFormIntegration.Data).ItemId)
+    )
+);
+/*Set(varBusinessPartnerId,"10ae4de9-e777-ed11-81ab-0022489c4873");*/
+If(
+    !IsBlank(varBusinessPartnerId),
+    Set(
+        varTemporaryDealerInfo,
+        LookUp(
+            'Business Partners',
+            Account = GUID(varBusinessPartnerId),
+            If(
+                ((!IsBlank('Temporary Dealer Information valid until') && DateValue(
+                    Text(
+                        'Temporary Dealer Information valid until',
+                        "dd-mmm-yyyy"
+                    )
+                ) >= Today()) && (!IsBlank('Temporary Dealer Information valid from') && DateValue(
+                    Text(
+                        'Temporary Dealer Information valid from',
+                        "dd-mmm-yyyy"
+                    )
+                ) <= Today())) || (IsBlank('Temporary Dealer Information valid until') && IsBlank('Temporary Dealer Information valid from')) || (IsBlank('Temporary Dealer Information valid until') && (!IsBlank('Temporary Dealer Information valid from') && DateValue(
+                    Text(
+                        'Temporary Dealer Information valid from',
+                        "dd-mmm-yyyy"
+                    )
+                ) <= Today())) || (IsBlank('Temporary Dealer Information valid from') && (!IsBlank('Temporary Dealer Information valid until') && DateValue(
+                    Text(
+                        'Temporary Dealer Information valid until',
+                        "dd-mmm-yyyy"
+                    )
+                ) >= Today())),
+                'Temporary Dealer Information',
+                ""
+            )
+        )
+    )
+);
+Set(varUserSite,LookUp(Users,'Primary Email'=User().Email,GUID(Site.Site)));
+If(
+    !IsBlank(varBusinessPartnerId),
+    Clear(ServiceLines);Clear(BrandServiceLines);Clear(ServiceLinesDuplicates);
+);
+If(
+    !IsBlank(varBusinessPartnerId),
+ForAll(Filter('Business Partner - Brands','Business Partner'.Account=varBusinessPartnerId && Status='Status (Business Partner - Brands)'.Active) As bpbrands,
+ForAll(Filter(Brands,Brand=bpbrands.Brand.Brand) As brands,Collect(BrandServiceLines,{ServiceLineName :brands.'Service Line'.Name,ServiceLine:brands.'Service Line'.'Service Line',Brand:brands.Name})));
+);
+If(
+    !IsBlank(varBusinessPartnerId),
+ForAll(SortByColumns(BrandServiceLines,"Brand",SortOrder.Descending) As brands,Collect(ServiceLinesDuplicates,{ServiceLineName :brands.ServiceLineName,ServiceLine:brands.ServiceLine}));
+);
+If(
+    !IsBlank(varBusinessPartnerId),
+ForAll(Distinct(ServiceLinesDuplicates,ThisRecord),Collect(ServiceLines,{ServiceLineName :Value .ServiceLineName,ServiceLine:Value.ServiceLine}));
+);
+If(
+    !IsBlank(ServiceLines),
+Set(varServiceLine,First(ServiceLines).ServiceLine);
+);
+
+If(
+    !IsBlank(varBusinessPartnerId),
+    Clear(ContactList)
+);
+If(
+    !IsBlankOrError(varBusinessPartnerId),
+    ForAll(
+        Filter(
+            Contacts,
+            AsType(
+                'Business Partner',
+                [@'Business Partners']
+            ).Account = varBusinessPartnerId && Status = 'Status (Contacts)'.Active
+        ) As contact,
+        Collect(
+            ContactList,
+            {
+                Department: If(
+                    IsBlankOrError(contact.'Department (jarvis_department)'),
+                    "",
+                    Text(contact.'Department (jarvis_department)')
+                ),
+                'Contact Time Type': If(
+                    IsBlankOrError(contact.'Contact Time Type'),
+                    "",
+                    Text(contact.'Contact Time Type')
+                ),
+                'Full Name': If(
+                    IsBlankOrError(contact.'Full Name'),
+                    "",
+                    Text(contact.'Full Name')
+                ),
+                'Job Title': If(
+                    IsBlankOrError(contact.'Job Title (jarvis_Title)'.Name),
+                    "",
+                    Text(contact.'Job Title (jarvis_Title)'.Name)
+                ),
+                'Mobile Phone': If(
+                    IsBlankOrError(contact.'Mobile Phone'),
+                    "",
+                    Text(contact.'Mobile Phone')
+                ),
+                'Company Phone': If(
+                    IsBlankOrError(contact.'Fixed Phone'),
+                    "",
+                    Text(contact.'Fixed Phone')
+                ),
+                'Sort Order': If(
+                    IsBlankOrError(contact.'Call Order'),
+                    "",
+                    Text(contact.'Call Order')
+                )
+                    /* Country: Text(LookUp('Business Partners',Account= varHomeDealerId,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),
+                    Prefix: Text(
+                        LookUp(
+                            'Phone Prefixes',
+                            Site.Site = varUserSite && Country.Name = Text(varHomeDealerCountry) && 'Service Line'.'Service Line' = varServiceLine,
+                            Prefix
+                        )
+                    )*/
+            }
+        )
+    )
+);

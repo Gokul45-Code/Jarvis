@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Jarvis.CE.Plugins", "MCS.Jarvis.CE.Plugins\MCS.Jarvis.CE.Plugins.csproj", "{0B2541C9-599E-4EF6-A063-692A889FA8DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Jarvis.CE.UnitTest", "MCS.Jarvis.CE.UnitTest\MCS.Jarvis.CE.UnitTest.csproj", "{AFF684E0-1B12-4C5D-A473-0397F85F9B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Jarvis.CE.BusinessProcesses", "MCS.Jarvis.CE.BusinessProcesses\MCS.Jarvis.CE.BusinessProcesses.csproj", "{00999EF2-EFC1-4028-AF3F-D63DDFAB0B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Jarvis.CE.Commons", "MCS.Jarvis.CE.Commons\MCS.Jarvis.CE.Commons.csproj", "{C81C4001-D3FD-4E88-8001-89929B68D706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Jarvis.CE.Customizations", "MCS.Jarvis.CE.Customizations\MCS.Jarvis.CE.Customizations.csproj", "{C8DF9771-2F4C-4A11-A8C9-45174D464981}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MCS.jarvis.CE.BusinessProcessShared", "MCS.jarvis.CE.BusinessProcessShared\MCS.jarvis.CE.BusinessProcessShared.shproj", "{2C780DB9-4A4D-4B45-B536-9F49B01BE7FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AEC02414-F39A-4FFA-BF53-17EDC453F055}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B2541C9-599E-4EF6-A063-692A889FA8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B2541C9-599E-4EF6-A063-692A889FA8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B2541C9-599E-4EF6-A063-692A889FA8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B2541C9-599E-4EF6-A063-692A889FA8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFF684E0-1B12-4C5D-A473-0397F85F9B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF684E0-1B12-4C5D-A473-0397F85F9B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF684E0-1B12-4C5D-A473-0397F85F9B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF684E0-1B12-4C5D-A473-0397F85F9B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00999EF2-EFC1-4028-AF3F-D63DDFAB0B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00999EF2-EFC1-4028-AF3F-D63DDFAB0B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00999EF2-EFC1-4028-AF3F-D63DDFAB0B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00999EF2-EFC1-4028-AF3F-D63DDFAB0B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81C4001-D3FD-4E88-8001-89929B68D706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81C4001-D3FD-4E88-8001-89929B68D706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81C4001-D3FD-4E88-8001-89929B68D706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81C4001-D3FD-4E88-8001-89929B68D706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DF9771-2F4C-4A11-A8C9-45174D464981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DF9771-2F4C-4A11-A8C9-45174D464981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DF9771-2F4C-4A11-A8C9-45174D464981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DF9771-2F4C-4A11-A8C9-45174D464981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D505C42-E9AE-4C0E-800B-CC98ED47CAAA}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		MCS.jarvis.CE.BusinessProcessShared\MCS.jarvis.CE.BusinessProcessShared.projitems*{0b2541c9-599e-4ef6-a063-692a889fa8db}*SharedItemsImports = 4
+		MCS.jarvis.CE.BusinessProcessShared\MCS.jarvis.CE.BusinessProcessShared.projitems*{2c780db9-4a4d-4b45-b536-9f49b01be7ff}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,670 @@
+﻿Refresh([@Cases]);
+If(
+    !IsBlankOrError(First(ModelDrivenFormIntegration.Data).ItemId),
+    Set(
+        varCaseID,
+        GUID(First(ModelDrivenFormIntegration.Data).ItemId)
+    )
+);
+If(
+    LookUp(
+        Cases,
+        Case = varCaseID && !IsBlank(varCaseID),
+        'Case Type'
+    ) = 'Case Type (Cases)'.Breakdown,
+    Set(
+        varCaseID,
+        varCaseID
+    ),
+    Set(
+        varCaseID,
+        LookUp(
+            Cases,
+            Case = varCaseID && !IsBlank(varCaseID),
+            'Parent Case'.Case
+        )
+    )
+);
+If(
+    !IsEmpty(varCaseID),
+    Set(
+        varCustomerId,
+        LookUp(
+            Cases,
+            Case = varCaseID && !IsBlank(varCaseID),
+            GUID(
+                AsType(
+                    Customer,
+                    [@'Business Partners']
+                ).Account
+            )
+        )
+    );
+    Set(
+        varServiceLine,
+        LookUp(
+            Cases,
+            Case = GUID(varCaseID) && !IsBlank(varCaseID),
+            GUID('Service Line'.'Service Line')
+        )
+    );
+    Set(
+        varHomeDealerId,
+        LookUp(
+            Cases,
+            Case = GUID(varCaseID) && !IsBlank(varCaseID),
+            GUID('Home Dealer'.Account)
+        )
+    );
+    Set(
+        varCallerCompanyId,
+        LookUp(
+            Cases,
+            Case = GUID(varCaseID) && !IsBlank(varCaseID),
+            GUID('Caller Company'.Account)
+        )
+    );
+    Set(
+        varMarketCompanyID,
+        LookUp(
+            'Business Partners',
+            Account = varHomeDealerId,
+            GUID ('Market Company'.Account)
+        )
+    );
+    Set(
+        varCallerCompanyCountry,
+        If(
+            !IsBlankOrError(varCallerCompanyId),
+            LookUp(
+                'Business Partners',
+                Account = varCallerCompanyId,
+                If( IsEmpty(Country)||IsBlankOrError('Billing Country'.Name),
+                'Address1: Country'.Name,
+                 'Billing Country'.Name
+                )
+            ),
+            ""
+        )
+    );
+    Set(
+        varHomeDealerCountry,
+        LookUp(
+            'Business Partners',
+            Account = varHomeDealerId,
+            If(
+                IsEmpty(Country) || IsBlankOrError('Billing Country'.Name),
+                'Address1: Country'.Name,
+                'Billing Country'.Name
+            )
+        )
+    );
+    
+//Set(varCaseID,GUID("249bb053-69ed-4d58-8c82-74544a624580"));
+//Set(varCustomerId,GUID("22437779-5d67-ed11-9561-0022489ca13e"));
+//Set(varHomeDealerId,GUID("22437779-5d67-ed11-9561-0022489ca13e"));
+//Set(varServiceLine,GUID("8d271bae-5e67-ed11-9561-0022489ca13e"));
+Set(
+        varUserSite,
+        LookUp(
+            Users,
+            'Primary Email' = User().Email,
+            GUID(Site.Site)
+        )
+    );
+    ClearCollect(
+        passoutCollection,
+        Filter(
+            'Pass Outs',
+            Case.Case = GUID(varCaseID) && !IsBlank(varCaseID) && Status = 'Status (Pass Outs)'.Active
+        )
+    );
+    If(
+        !IsBlank(varCaseID),
+        Clear(marketCompany)
+    );
+    If(
+        !IsEmpty(passoutCollection),
+        ForAll(
+            Filter(
+                passoutCollection,
+                'Repairing Dealer'.Account <> varHomeDealerId
+            ) As item,
+            ForAll(
+                Filter(
+                    'Business Partners',
+                    Account = item.'Repairing Dealer'.Account
+                ) As account,
+                If(
+                    !IsBlankOrError(account.'Market Company'.Account),
+                    Collect(
+                        marketCompany,
+                        {
+                            'Market Company': If(
+                                !IsBlankOrError(account.'Market Company'.Account),
+                                GUID(account.'Market Company'.Account)
+                            )
+                        }
+                    )
+                )
+            )
+        )
+    );
+    If(
+        !IsBlank(varCaseID),
+        Clear(CaseContactList)
+    );
+    ForAll(
+        Filter(
+            'Case - Contacts',
+            Case.Case = varCaseID && !IsBlank(varCaseID) && Status = 'Status (Case - Contacts)'.Active
+        ) As item,
+        Collect(
+            CaseContactList,
+            {
+                Source: "Case",
+                'Business Partner': If(
+                    IsBlankOrError(item.'Business Partner'),
+                    "",
+                    Text(item.'Business Partner')
+                ),
+                Department: "",
+                'Contact Time Type': "",
+                'Full Name': If(
+                    IsBlankOrError(item.Name),
+                    "",
+                    Text(item.Name)
+                ),
+                'Case Role': If(
+                    IsBlankOrError(item.Role),
+                    "",
+                    Text(item.Role)
+                ),
+                'Job Title': If(
+                    IsBlankOrError(item.'Job Title'),
+                    "",
+                    Text(item.'Job Title')
+                ),
+                'Mobile Phone': If(
+                    IsBlankOrError(item.'Mobile Phone'),
+                    "",
+                    Text(item.'Mobile Phone')
+                ),
+                'Company Phone': If(
+                    IsBlankOrError(item.'Fixed Phone'),
+                    "",
+                    Text(item.'Fixed Phone')
+                ),
+                'Main Language': If(
+                    IsBlankOrError(item.Language.'ISO Language Name'),
+                    "",
+                    Text(item.Language.'ISO Language Name')
+                ),
+                'Sort Order':If(
+                    IsBlankOrError(item.'Call Order'),
+                    "",
+                    Text(item.'Call Order')
+                ),
+                /* Country:Text(LookUp('Business Partners',Account= varHomeDealerId,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                Prefix: Text(
+                    LookUp(
+                        'Phone Prefixes',
+                        Site.Site = varUserSite && Country.Name = If(
+                            item.Role = 'Case Role'.Customer && !IsBlankOrError(varCallerCompanyCountry),
+                            Text(varCallerCompanyCountry),
+                            Text(varHomeDealerCountry)
+                        ) && 'Service Line'.'Service Line' = varServiceLine,
+                        Prefix
+                    )
+                )
+            }
+        )
+    );
+    If(
+        !IsEmpty(passoutCollection),
+        ForAll(
+            Filter(
+                'Case - Contacts',
+                'Pass Out'.'Pass Out' in passoutCollection.'Pass Out' && Status = 'Status (Case - Contacts)'.Active
+            ) As item,
+            Collect(
+                CaseContactList,
+                {
+                    Source: "RD",
+                    'Business Partner': Text(
+                        LookUp(
+                            passoutCollection,
+                            'Pass Out' = item.'Pass Out'.'Pass Out',
+                            'Repairing Dealer'.'Account Name'
+                        )
+                    ),
+                    Department: "",
+                    'Contact Time Type': "",
+                    'Full Name': If(
+                        IsBlankOrError(item.Name),
+                        "",
+                        Text(item.Name)
+                    ),
+                    'Case Role': "RD",
+                    'Job Title': If(
+                        IsBlankOrError(item.'Job Title'),
+                        "",
+                        Text(item.'Job Title')
+                    ),
+                    'Mobile Phone': If(
+                        IsBlankOrError(item.'Mobile Phone'),
+                        "",
+                        Text(item.'Mobile Phone')
+                    ),
+                    'Company Phone': If(
+                        IsBlankOrError(item.'Fixed Phone'),
+                        "",
+                        Text(item.'Fixed Phone')
+                    ),
+                    'Main Language': If(
+                        IsBlankOrError(item.Language.'ISO Language Name'),
+                        "",
+                        Text(item.Language.'ISO Language Name')
+                    ),
+                    'Sort Order': If(
+                    IsBlankOrError(item.'Call Order'),
+                    "",
+                    Text(item.'Call Order')
+                ),
+                    /* Country:Text(LookUp('Business Partners',Account=LookUp(passoutCollection,'Pass Out' = item.'Pass Out'.'Pass Out','Repairing Dealer'.Account),If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                    Prefix: Text(
+                        LookUp(
+                            'Phone Prefixes',
+                            Site.Site = varUserSite && Country.Name = Text(
+                                LookUp(
+                                    'Business Partners',
+                                    Account = LookUp(
+                                        passoutCollection,
+                                        'Pass Out' = item.'Pass Out'.'Pass Out',
+                                        'Repairing Dealer'.Account
+                                    ),
+                                    If(
+                                        IsEmpty(Country) || IsBlankOrError('Billing Country'.Name),
+                                        'Address1: Country'.Name,
+                                        'Billing Country'.Name
+                                    )
+                                )
+                            ) && 'Service Line'.'Service Line' = varServiceLine,
+                            Prefix
+                        )
+                    )
+                }
+            )
+        )
+    );
+    If(
+        !IsEmpty(passoutCollection),
+        ForAll(
+            passoutCollection As item,
+            ForAll(
+                Filter(
+                    Contacts,
+                    AsType(
+                        'Business Partner',
+                        [@'Business Partners']
+                    ).Account = item.'Repairing Dealer'.Account && Status = 'Status (Contacts)'.Active
+                ) As contact,
+                Collect(
+                    CaseContactList,
+                    {
+                        Source: "RD",
+                        'Business Partner': AsType(
+                            contact.'Business Partner',
+                            [@'Business Partners']
+                        ).'Account Name',
+                        Department: If(
+                            IsBlankOrError(contact.'Department (jarvis_department)'),
+                            "",
+                            Text(contact.'Department (jarvis_department)')
+                        ),
+                        'Contact Time Type': If(
+                            IsBlankOrError(contact.'Contact Time Type'),
+                            "",
+                            Text(contact.'Contact Time Type')
+                        ),
+                        'Full Name': If(
+                            IsBlankOrError(contact.'Full Name'),
+                            "",
+                            Text(contact.'Full Name')
+                        ),
+                        'Case Role': "RD",
+                        'Job Title': If(
+                            IsBlankOrError(contact.'Job Title (jarvis_Title)'.Name),
+                            "",
+                            Text(contact.'Job Title (jarvis_Title)'.Name)
+                        ),
+                        'Mobile Phone': If(
+                            IsBlankOrError(contact.'Mobile Phone'),
+                            "",
+                            Text(contact.'Mobile Phone')
+                        ),
+                        'Company Phone': If(
+                            IsBlankOrError(contact.'Fixed Phone'),
+                            "",
+                            Text(contact.'Fixed Phone')
+                        ),
+                        'Main Language': If(
+                            IsBlankOrError(contact.'Main Language'.'ISO Language Name'),
+                            "",
+                            Text(contact.'Main Language'.'ISO Language Name')
+                        ),
+                        'Sort Order': If(
+                            IsBlankOrError(contact.'Call Order'),
+                            "",
+                            Text(contact.'Call Order')
+                        ),
+                        /*  Country: Text(LookUp('Business Partners',Account=item.'Repairing Dealer'.Account,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                        Prefix: Text(
+                            LookUp(
+                                'Phone Prefixes',
+                                Site.Site = varUserSite && Country.Name = Text(
+                                    LookUp(
+                                        'Business Partners',
+                                        Account = item.'Repairing Dealer'.Account,
+                                        If(
+                                            IsEmpty(Country) || IsBlankOrError('Billing Country'.Name),
+                                            'Address1: Country'.Name,
+                                            'Billing Country'.Name
+                                        )
+                                    )
+                                ) && 'Service Line'.'Service Line' = varServiceLine,
+                                Prefix
+                            )
+                        )
+                    }
+                )
+            )
+        )
+    );
+    ForAll(
+        Filter(
+            Contacts,
+            AsType(
+                'Business Partner',
+                [@'Business Partners']
+            ).Account = varHomeDealerId && Status = 'Status (Contacts)'.Active
+        ) As contact,
+        Collect(
+            CaseContactList,
+            {
+                Source: "HD",
+                'Business Partner': AsType(
+                    contact.'Business Partner',
+                    [@'Business Partners']
+                ).'Account Name',
+                Department: If(
+                    IsBlankOrError(contact.'Department (jarvis_department)'),
+                    "",
+                    Text(contact.'Department (jarvis_department)')
+                ),
+                'Contact Time Type': If(
+                    IsBlankOrError(contact.'Contact Time Type'),
+                    "",
+                    Text(contact.'Contact Time Type')
+                ),
+                'Full Name': If(
+                    IsBlankOrError(contact.'Full Name'),
+                    "",
+                    Text(contact.'Full Name')
+                ),
+                'Case Role': "HD",
+                'Job Title': If(
+                    IsBlankOrError(contact.'Job Title (jarvis_Title)'.Name),
+                    "",
+                    Text(contact.'Job Title (jarvis_Title)'.Name)
+                ),
+                'Mobile Phone': If(
+                    IsBlankOrError(contact.'Mobile Phone'),
+                    "",
+                    Text(contact.'Mobile Phone')
+                ),
+                'Company Phone': If(
+                    IsBlankOrError(contact.'Fixed Phone'),
+                    "",
+                    Text(contact.'Fixed Phone')
+                ),
+                'Main Language': If(
+                    IsBlankOrError(contact.'Main Language'.'ISO Language Name'),
+                    "",
+                    Text(contact.'Main Language'.'ISO Language Name')
+                ),
+                'Sort Order': If(
+                    IsBlankOrError(contact.'Call Order'),
+                    "",
+                    Text(contact.'Call Order')
+                ),
+                /* Country: Text(LookUp('Business Partners',Account= varHomeDealerId,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                Prefix: Text(
+                    LookUp(
+                        'Phone Prefixes',
+                        Site.Site = varUserSite && Country.Name = Text(varHomeDealerCountry) && 'Service Line'.'Service Line' = varServiceLine,
+                        Prefix
+                    )
+                )
+            }
+        )
+    );
+    ForAll(
+        Filter(
+            Contacts,
+            AsType(
+                'Business Partner',
+                [@'Business Partners']
+            ).Account = varCustomerId && Status = 'Status (Contacts)'.Active
+        ) As contact,
+        Collect(
+            CaseContactList,
+            {
+                Source: "Customer",
+                'Business Partner': AsType(
+                    contact.'Business Partner',
+                    [@'Business Partners']
+                ).'Account Name',
+                Department: If(
+                    IsBlankOrError(contact.'Department (jarvis_department)'),
+                    "",
+                    Text(contact.'Department (jarvis_department)')
+                ),
+                'Contact Time Type': If(
+                    IsBlankOrError(contact.'Contact Time Type'),
+                    "",
+                    Text(contact.'Contact Time Type')
+                ),
+                'Full Name': If(
+                    IsBlankOrError(contact.'Full Name'),
+                    "",
+                    Text(contact.'Full Name')
+                ),
+                'Case Role': "Customer",
+                'Job Title': If(
+                    IsBlankOrError(contact.'Job Title (jarvis_Title)'.Name),
+                    "",
+                    Text(contact.'Job Title (jarvis_Title)'.Name)
+                ),
+                'Mobile Phone': If(
+                    IsBlankOrError(contact.'Mobile Phone'),
+                    "",
+                    Text(contact.'Mobile Phone')
+                ),
+                'Company Phone': If(
+                    IsBlankOrError(contact.'Fixed Phone'),
+                    "",
+                    Text(contact.'Fixed Phone')
+                ),
+                'Main Language': If(
+                    IsBlankOrError(contact.'Main Language'.'ISO Language Name'),
+                    "",
+                    Text(contact.'Main Language'.'ISO Language Name')
+                ),
+                'Sort Order': If(
+                    IsBlankOrError(contact.'Call Order'),
+                    "",
+                    Text(contact.'Call Order')
+                ),
+                /* Country: Text(LookUp('Business Partners',Account=varCustomerId,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                Prefix: Text(
+                    LookUp(
+                        'Phone Prefixes',
+                        Site.Site = varUserSite && Country.Name = If(
+                            !IsBlankOrError(varCallerCompanyCountry),
+                            Text(varCallerCompanyCountry),
+                            Text(varHomeDealerCountry)
+                        ) && 'Service Line'.'Service Line' = varServiceLine,
+                        Prefix
+                    )
+                )
+            }
+        )
+    );
+    If(
+        !IsBlankOrError(varMarketCompanyID),
+        ForAll(
+            Filter(
+                Contacts,
+                AsType(
+                    'Business Partner',
+                    [@'Business Partners']
+                ).Account = varMarketCompanyID && Status = 'Status (Contacts)'.Active
+            ) As contact,
+            Collect(
+                CaseContactList,
+                {
+                    Source: "Market Company",
+                    'Business Partner': AsType(
+                        contact.'Business Partner',
+                        [@'Business Partners']
+                    ).'Account Name',
+                    Department: If(
+                        IsBlankOrError(contact.'Department (jarvis_department)'),
+                        "",
+                        Text(contact.'Department (jarvis_department)')
+                    ),
+                    'Contact Time Type': If(
+                        IsBlankOrError(contact.'Contact Time Type'),
+                        "",
+                        Text(contact.'Contact Time Type')
+                    ),
+                    'Full Name': If(
+                        IsBlankOrError(contact.'Full Name'),
+                        "",
+                        Text(contact.'Full Name')
+                    ),
+                    'Case Role': "Market Company",
+                    'Job Title': If(
+                        IsBlankOrError(contact.'Job Title (jarvis_Title)'.Name),
+                        "",
+                        Text(contact.'Job Title (jarvis_Title)'.Name)
+                    ),
+                    'Mobile Phone': If(
+                        IsBlankOrError(contact.'Mobile Phone'),
+                        "",
+                        Text(contact.'Mobile Phone')
+                    ),
+                    'Company Phone': If(
+                        IsBlankOrError(contact.'Fixed Phone'),
+                        "",
+                        Text(contact.'Fixed Phone')
+                    ),
+                    'Main Language': If(
+                        IsBlankOrError(contact.'Main Language'.'ISO Language Name'),
+                        "",
+                        Text(contact.'Main Language'.'ISO Language Name')
+                    ),
+                    'Sort Order': If(
+                        IsBlankOrError(contact.'Call Order'),
+                        "",
+                        Text(contact.'Call Order')
+                    ),
+                    /* Country: Text(LookUp('Business Partners',Account= varHomeDealerId,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                    Prefix: Text(
+                        LookUp(
+                            'Phone Prefixes',
+                            Site.Site = varUserSite && Country.Name = Text(varHomeDealerCountry) && 'Service Line'.'Service Line' = varServiceLine,
+                            Prefix
+                        )
+                    )
+                }
+            )
+        )
+    );
+    If(
+        !IsEmpty(marketCompany),
+        ForAll(
+            marketCompany As item,
+            ForAll(
+                Filter(
+                    Contacts,
+                    AsType(
+                        'Business Partner',
+                        [@'Business Partners']
+                    ).Account = item.'Market Company' && Status = 'Status (Contacts)'.Active
+                ) As contact,
+                Collect(
+                    CaseContactList,
+                    {
+                        Source: "Market Company",
+                        'Business Partner': AsType(
+                            contact.'Business Partner',
+                            [@'Business Partners']
+                        ).'Account Name',
+                        Department: If(
+                            IsBlankOrError(contact.'Department (jarvis_department)'),
+                            "",
+                            Text(contact.'Department (jarvis_department)')
+                        ),
+                        'Contact Time Type': If(
+                            IsBlankOrError(contact.'Contact Time Type'),
+                            "",
+                            Text(contact.'Contact Time Type')
+                        ),
+                        'Full Name': If(
+                            IsBlankOrError(contact.'Full Name'),
+                            "",
+                            Text(contact.'Full Name')
+                        ),
+                        'Case Role': "Market Company",
+                        'Job Title': If(
+                            IsBlankOrError(contact.'Job Title (jarvis_Title)'.Name),
+                            "",
+                            Text(contact.'Job Title (jarvis_Title)'.Name)
+                        ),
+                        'Mobile Phone': If(
+                            IsBlankOrError(contact.'Mobile Phone'),
+                            "",
+                            Text(contact.'Mobile Phone')
+                        ),
+                        'Company Phone': If(
+                            IsBlankOrError(contact.'Fixed Phone'),
+                            "",
+                            Text(contact.'Fixed Phone')
+                        ),
+                        'Main Language': If(
+                            IsBlankOrError(contact.'Main Language'.'ISO Language Name'),
+                            "",
+                            Text(contact.'Main Language'.'ISO Language Name')
+                        ),
+                        'Sort Order': If(
+                            IsBlankOrError(contact.'Call Order'),
+                            "",
+                            Text(contact.'Call Order')
+                        ),
+                        /* Country: Text(LookUp('Business Partners',Account= varHomeDealerId,If(IsEmpty(Country)||IsBlankOrError(Country.Name),'Business Partner Country'.Name,Country.Name))),*/
+                        Prefix: Text(
+                            LookUp(
+                                'Phone Prefixes',
+                                Site.Site = varUserSite && Country.Name = Text(varHomeDealerCountry) && 'Service Line'.'Service Line' = varServiceLine,
+                                Prefix
+                            )
+                        )
+                    }
+                )
+            )
+        )
+    );
+    
+);

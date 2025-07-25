@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2c780db9-4a4d-4b45-b536-9f49b01be7ff</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MCS.jarvis.CE.BusinessProcessShared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)account\AccountProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppNotification\CaseNotifiaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AppNotification\InAppNotification.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CaseContact\CaseContactHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CaseEscalation\CaseEscalationProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CaseMonitor\CaseMonitorProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CasePreferredAgent\CasePreferredAgent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CaseUserProfile\CaseUserProfileOperation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Case\CaseAvailableGOPOut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Case\CaseContact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)case\CaseOperations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Case\IncidentNature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GOP\GOPCalculation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BaseWebClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\CrmHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MemberAssociation\TeamBusinessProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PassOut\PassOutProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)queue\PickRelease.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TranslationProcessAction\TranslationProcessAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TranslationProcess\TranslationProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)user\UserOperation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VASBreakdownProcess\VASBreakDownProcess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Account\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Queue\" />
+    <Folder Include="$(MSBuildThisFileDirectory)User\" />
+  </ItemGroup>
+</Project>

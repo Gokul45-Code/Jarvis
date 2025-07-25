@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Threading.Tasks.Extensions.4.2.0.1.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:System.Threading.Tasks.Fakes.ShimValueTask">
+            <summary>Shim type of System.Threading.Tasks.ValueTask</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Fakes.ShimValueTask.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Fakes.ShimValueTask.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Fakes.ShimValueTask.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Fakes.ShimValueTask.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask.CompletedTaskGet">
+            <summary>Sets the Shim of ValueTask.get_CompletedTask()</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask.EqualityOpValueTaskValueTask">
+            <summary>Sets the Shim of ValueTask.op_Equality(ValueTask left, ValueTask right)</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask.InequalityOpValueTaskValueTask">
+            <summary>Sets the Shim of ValueTask.op_Inequality(ValueTask left, ValueTask right)</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask.StaticConstructor">
+            <summary>Sets the Shim of ValueTask.ValueTask()</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Fakes.ShimValueTask`1">
+            <summary>Shim type of System.Threading.Tasks.ValueTask`1</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Fakes.ShimValueTask`1.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Fakes.ShimValueTask`1.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Fakes.ShimValueTask`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Fakes.ShimValueTask`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask`1.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask`1.EqualityOpValueTaskOfT0ValueTaskOfT0">
+            <summary>Sets the Shim of ValueTask`1.op_Equality(ValueTask`1&lt;!0&gt; left, ValueTask`1&lt;!0&gt; right)</summary>
+        </member>
+        <member name="P:System.Threading.Tasks.Fakes.ShimValueTask`1.InequalityOpValueTaskOfT0ValueTaskOfT0">
+            <summary>Sets the Shim of ValueTask`1.op_Inequality(ValueTask`1&lt;!0&gt; left, ValueTask`1&lt;!0&gt; right)</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource">
+            <summary>Stub type of System.Threading.Tasks.Sources.IValueTaskSource</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.#ctor">
+            <summary>Initializes a new instance of type StubIValueTaskSource</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.GetResultInt16">
+            <summary>Sets the stub of IValueTaskSource.GetResult(Int16 token)</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.GetStatusInt16">
+            <summary>Sets the stub of IValueTaskSource.GetStatus(Int16 token)</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.OnCompletedActionOfObjectObjectInt16ValueTaskSourceOnCompletedFlags">
+            <summary>Sets the stub of IValueTaskSource.OnCompleted(Action`1&lt;Object&gt; continuation, Object state, Int16 token, ValueTaskSourceOnCompletedFlags flags)</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.System#Threading#Tasks#Sources#IValueTaskSource#GetResult(System.Int16)">
+            <summary>Sets the Stub of IValueTaskSource.GetResult(Int16 token)</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.System#Threading#Tasks#Sources#IValueTaskSource#GetStatus(System.Int16)">
+            <summary>Sets the Stub of IValueTaskSource.GetStatus(Int16 token)</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource.System#Threading#Tasks#Sources#IValueTaskSource#OnCompleted(System.Action{System.Object},System.Object,System.Int16,System.Threading.Tasks.Sources.ValueTaskSourceOnCompletedFlags)">
+            <summary>Sets the Stub of IValueTaskSource.OnCompleted(Action`1&lt;Object&gt; continuation, Object state, Int16 token, ValueTaskSourceOnCompletedFlags flags)</summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1">
+            <summary>Stub type of System.Threading.Tasks.Sources.IValueTaskSource`1</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.#ctor">
+            <summary>Initializes a new instance of type StubIValueTaskSource</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.GetResultInt16">
+            <summary>Sets the stub of IValueTaskSource`1.GetResult(Int16 token)</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.GetStatusInt16">
+            <summary>Sets the stub of IValueTaskSource`1.GetStatus(Int16 token)</summary>
+        </member>
+        <member name="F:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.OnCompletedActionOfObjectObjectInt16ValueTaskSourceOnCompletedFlags">
+            <summary>Sets the stub of IValueTaskSource`1.OnCompleted(Action`1&lt;Object&gt; continuation, Object state, Int16 token, ValueTaskSourceOnCompletedFlags flags)</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.System#Threading#Tasks#Sources#IValueTaskSource{TResult}#GetResult(System.Int16)">
+            <summary>Sets the Stub of IValueTaskSource`1.GetResult(Int16 token)</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.System#Threading#Tasks#Sources#IValueTaskSource{TResult}#GetStatus(System.Int16)">
+            <summary>Sets the Stub of IValueTaskSource`1.GetStatus(Int16 token)</summary>
+        </member>
+        <member name="M:System.Threading.Tasks.Sources.Fakes.StubIValueTaskSource`1.System#Threading#Tasks#Sources#IValueTaskSource{TResult}#OnCompleted(System.Action{System.Object},System.Object,System.Int16,System.Threading.Tasks.Sources.ValueTaskSourceOnCompletedFlags)">
+            <summary>Sets the Stub of IValueTaskSource`1.OnCompleted(Action`1&lt;Object&gt; continuation, Object state, Int16 token, ValueTaskSourceOnCompletedFlags flags)</summary>
+        </member>
+    </members>
+</doc>

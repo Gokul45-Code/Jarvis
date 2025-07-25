@@ -1,0 +1,10 @@
+﻿If(!IsBlank(varBusinessPartnerId),
+SortByColumns(Filter(ContactList,If(APS.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If(Accounting.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If(Escalation.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If(General.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If(Parts.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If('Sales(GOP)'.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If(Service.Value,Department in SelectedDepartment.Value,IsEmpty(SelectedDepartment),true,Department in SelectedDepartment.Value)
+&& If('Day Phone'.Value,'Contact Time Type' in SelectedContactTime.Value,IsEmpty(SelectedContactTime),true, 'Contact Time Type' in SelectedContactTime.Value)
+&& If('Night Phone'.Value,'Contact Time Type' in SelectedContactTime.Value,IsEmpty(SelectedContactTime),true,'Contact Time Type' in SelectedContactTime.Value)),"Department",SortOrder.Ascending,"Contact Time Type",SortOrder.Ascending,"Sort Order",SortOrder.Ascending))
