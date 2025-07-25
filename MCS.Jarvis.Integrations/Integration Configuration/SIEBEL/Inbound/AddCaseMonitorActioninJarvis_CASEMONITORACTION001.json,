@@ -1,0 +1,39 @@
+{
+  "casemonitoraction": {
+    "sourceEntityName": "ActionBdMonitorHistoryArgus",
+    "targetEntityName": "jarvis_casemonitoractions",
+    "fieldMappings": [
+      {
+        "sourceFieldSchema": "FUComment",
+        "targetFieldSchema": "subject",
+        "targetFieldDataType": "text",
+        "isRequired": true,
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null
+      },
+      {
+        "sourceFieldSchema": "FUDateARGUS",
+        "targetFieldSchema": "actualstart",
+        "targetFieldDataType": "Date",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null,
+        "timeZoneCode": "Romance Standard Time"
+      },
+      {
+        "sourceFieldSchema": "FUDateARGUS",
+        "targetFieldSchema": "jarvis_followuptime",
+        "targetFieldDataType": "Time",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null,
+        "timeZoneCode": "Romance Standard Time"
+      },
+      {
+        "sourceFieldSchema": "SpecialAttentionARGUS",
+        "targetFieldSchema": "jarvis_sa",
+        "targetFieldDataType": "Boolean",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null
+      }
+    ]
+  }
+}

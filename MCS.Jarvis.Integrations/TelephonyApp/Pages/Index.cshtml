@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    
+    ViewData["Title"] = new IndexModel().accessToken;
+}
+<div id="topLevelContainer" style="background-color:#F8F8F8">
+    <section id="widgetContainer">
+        <widgetArea>
+            <div class="expanded" style="background-color:#F8F8F8">
+                <section id="widgetSection">
+                    <toastArea>
+                        <div style="background-color:#F8F8F8">
+                            <section id="incomingCall">
+                                <iconArea><img src="~/images/callcenteroperator.svg" alt="CallCenterIcon" /></iconArea>
+                                <statusArea1><label>Voice call from</label></statusArea1>
+                                <callerIdArea><label class="callerName">Unknown</label></callerIdArea>
+                                <companyIdArea><label class="companyName">Unknown</label></companyIdArea>
+                                <statusArea2><button id="btnCreateCase" type="button" onclick="createCase();">New Case</button></statusArea2>
+                            </section>
+                        </div>
+                    </toastArea>
+                </section>
+            </div>
+        </widgetArea>
+    </section>
+</div>

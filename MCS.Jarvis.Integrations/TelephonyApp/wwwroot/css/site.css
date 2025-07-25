@@ -1,0 +1,174 @@
+﻿:root {
+    --sideBarWidth: 34px;
+    --expandedWidgetWidth: calc(100vw);
+    --widgetAreaWidth: var(--expandedWidgetWidth);
+    --totalHeight: 97vh;
+}
+
+html {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+body {
+    height: 99%;
+    width: 99%;
+    margin: 0px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#widgetContainer {
+    display: grid;
+    width: 100%;
+    height: var(--totalHeight);
+    grid-template-areas: "widgetArea sideBarArea";
+    grid-template-rows: 100%;
+    grid-template-columns: var(--widgetAreaWidth);
+    margin: 0px;
+}
+
+    #widgetContainer > widgetArea {
+        grid-area: widgetArea;
+        background-color: #FFFFFF;
+    }
+
+    #widgetContainer > sideBarArea {
+        grid-area: sideBarArea;
+        background-color: #FFFFFF;
+        border: 1px solid #d8d8d8;
+        border-right: none;
+    }
+
+#widgetSection {
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "headerLogoArea"
+        "toastArea"
+        "notesArea";
+    grid-template-rows: 42fr 273fr 405fr;
+    grid-template-columns: 1fr;
+    background-color: #F8F8F8;
+}
+
+    #widgetSection > headerLogoArea {
+        grid-area: headerLogoArea;
+        background-color: #FFFFFF;
+    }
+
+    #widgetSection > toastArea {
+        grid-area: toastArea;
+        background-color: #FFFFFF;
+    }
+
+    #widgetSection > notesArea {
+        grid-area: notesArea;
+        background-color: #FFFFFF;
+    }
+
+.expanded {
+    display: inline;
+}
+
+.collapsed {
+    display: inline;
+}
+
+#incomingCall {
+    display: inline-grid;
+    width: 90%;
+    height: 90%;
+    grid-template-areas: "emptyArea1 emptyArea1 emptyArea1 iconArea iconArea emptyArea2 emptyArea2 emptyArea2"
+        "emptyArea1 emptyArea1 emptyArea1 statusArea1 statusArea1 emptyArea2 emptyArea2 emptyArea2"
+        "emptyArea1 emptyArea1 emptyArea1 statusArea1 statusArea1 emptyArea2 emptyArea2 emptyArea2"
+        "emptyArea3 emptyArea3 callerIdArea callerIdArea callerIdArea callerIdArea emptyArea4 emptyArea4"
+        "emptyArea3 emptyArea3 companyIdArea companyIdArea companyIdArea companyIdArea emptyArea4 emptyArea4"
+        "emptyArea3 emptyArea3 statusArea2 statusArea2 statusArea2 statusArea2 emptyArea4 emptyArea4"
+        "emptyArea3 emptyArea3 statusArea2 statusArea2 statusArea2 statusArea2 emptyArea4 emptyArea4";
+    /*"emptyArea6 leftButtonArea leftButtonArea leftButtonArea rightButtonArea rightButtonArea rightButtonArea emptyArea7";*/
+    grid-template-rows: 80fr 16fr 22fr 16fr 35fr 35fr;
+    grid-template-columns: 110fr 410fr 365fr 400fr 400fr 365fr 410fr 110fr;
+    align-items: center;
+    grid-row-gap: 0.56vh;
+    grid-column-gap: 0;
+    background-color: #F8F8F8;
+    padding-top: 0.97vh;
+    padding-bottom: 0.97vh;
+    margin: 5%;
+}
+
+    #incomingCall > iconArea {
+        grid-area: iconArea;
+    }
+
+    #incomingCall > statusArea1 {
+        grid-area: statusArea1;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: black;
+    }
+
+    #incomingCall > callerIdArea {
+        grid-area: callerIdArea;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 2.22vh;
+        line-height: 2.92vh;
+        text-align: center;
+        color: black;
+    }
+
+    #incomingCall > companyIdArea {
+        grid-area: companyIdArea;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 2.22vh;
+        line-height: 2.92vh;
+        text-align: center;
+        color: black;
+    }
+
+    #incomingCall > statusArea2 {
+        grid-area: statusArea2;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: black;
+    }
+
+    #incomingCall > statusArea3 {
+        grid-area: statusArea3;
+        font-family: Segoe UI;
+        line-height: normal;
+        font-size: 1.67vh;
+        line-height: 2.22vh;
+        text-align: center;
+        color: black;
+    }
+
+    #incomingCall > leftButtonArea {
+        grid-area: leftButtonArea;
+    }
+
+    #incomingCall > rightButtonArea {
+        grid-area: rightButtonArea;
+    }
+
+.incomingCall {
+    display: none;
+}
+
+.incomingCallButton {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+}

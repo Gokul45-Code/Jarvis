@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b196f157-e7c8-4c37-a58e-2f51f8db0227</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MCS.Jarvis.Integration.Base</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\CommonUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\DynamicsApiClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\DynamicsApiHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\DynamicsAuthConnectionPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\DynamicsConnectionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\DynamicsServiceExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\GenericDynamics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\IDynamicsApiClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dynamics\ServiceException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EntityWrapper\Constant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\ILoggerService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\LoggerService.cs" />
+  </ItemGroup>
+</Project>

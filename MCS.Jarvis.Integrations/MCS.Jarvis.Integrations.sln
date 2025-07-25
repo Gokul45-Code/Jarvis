@@ -1,0 +1,128 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.CTDIDealersIntegration", "MCS.Jarvis.CTDIDealersIntegration", "{38A4BA99-4529-4BB6-A39B-1EEB7A39A96F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.IntegrationBase", "MCS.Jarvis.IntegrationBase", "{7418A950-1BF0-4855-94B2-C7D2E5460F31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.IntegrationProcess", "MCS.Jarvis.IntegrationProcess", "{3D03A540-820E-410B-838C-09AC4E026D08}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MCS.Jarvis.Integration.Base", "MCS.Jarvis.Integration.Base\MCS.Jarvis.Integration.Base.shproj", "{B196F157-E7C8-4C37-A58E-2F51F8DB0227}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationProcess", "IntegrationProcess\IntegrationProcess.csproj", "{50B513B5-1218-4D50-AF2C-C1F9356FE28F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Func-CTDI-001", "Func-CTDI-001\Func-CTDI-001.csproj", "{47DA6839-7C07-4E2A-8618-D664758F192E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiebelDB-001_Jarvis", "SiebelDB-001_Jarvis\SiebelDB-001_Jarvis.csproj", "{6A8C3AD6-60AF-4DF4-B2C8-3FBE4B88672B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.CaseInIntegration", "MCS.Jarvis.CaseInIntegration", "{DF5885BB-F457-41B3-B6A6-43AA5724162E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GOPFlowAutomate", "MCS.Jarvis.GOPFlowAutomate\GOPFlowAutomate.csproj", "{7F242582-9D45-45B3-8E73-72519D929EEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.GOPFlowAutomate", "MCS.Jarvis.GOPFlowAutomate", "{74A48BAD-E07D-48B6-8FAA-D8D600BC5092}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.CDBCustomersIntegration", "MCS.Jarvis.CDBCustomersIntegration", "{8BE2684A-A08B-4940-9E33-181561C027CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.VDAVehicleIntegration", "MCS.Jarvis.VDAVehicleIntegration", "{E0B4DCC0-5BAD-4733-901C-F56C181F6FBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Func-Jarvis-Vda", "func-jarvis-vda\Func-Jarvis-Vda.csproj", "{67FB708B-D737-4B82-849A-DA29A4880F96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "func-jarvis-cdb", "func-jarvis-cdb\func-jarvis-cdb.csproj", "{6BAF77F1-382A-4D91-B0E8-6B68E9898A55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.TelephonyIntegration", "MCS.Jarvis.TelephonyIntegration", "{A0E5D0DF-4AA7-43A3-9CD0-965A7C898793}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelephonyIntegrationFuncApp", "AzureFunction\TelephonyIntegrationFuncApp.csproj", "{48EF7DCE-8781-468A-AD90-670FCD916F7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelephonyIntegrationWidget", "TelephonyApp\TelephonyIntegrationWidget.csproj", "{2A0FD72E-029B-454D-8E4A-B9683777E3F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.PushArray", "MCS.Jarvis.PushArray", "{45C06D83-CD50-45BC-A818-F94C3D8E5B3D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "func-jarvis-pusharray", "func-jarvis-pusharray\func-jarvis-pusharray.csproj", "{0A8126A9-7DC6-405E-BB2B-83E04E827101}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.VolvoPay", "MCS.Jarvis.VolvoPay", "{40119C9E-D275-4108-96DC-0D0D931104FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "func-jarvis-volvopay", "func-jarvis-volvopay\func-jarvis-volvopay.csproj", "{1666014B-95BF-44A0-B0BC-23D9576E5590}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCS.Jarvis.CSISIntegration", "MCS.Jarvis.CSISIntegration", "{8E42DE49-B6D5-454F-B8C8-E28E7B6D57F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Func-jarvis-csis", "Func-jarvis-csis\Func-jarvis-csis.csproj", "{B433A59E-563A-4353-BBF9-FA2A35C895E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B196F157-E7C8-4C37-A58E-2F51F8DB0227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B196F157-E7C8-4C37-A58E-2F51F8DB0227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B513B5-1218-4D50-AF2C-C1F9356FE28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B513B5-1218-4D50-AF2C-C1F9356FE28F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B513B5-1218-4D50-AF2C-C1F9356FE28F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B513B5-1218-4D50-AF2C-C1F9356FE28F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47DA6839-7C07-4E2A-8618-D664758F192E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47DA6839-7C07-4E2A-8618-D664758F192E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47DA6839-7C07-4E2A-8618-D664758F192E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47DA6839-7C07-4E2A-8618-D664758F192E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A8C3AD6-60AF-4DF4-B2C8-3FBE4B88672B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8C3AD6-60AF-4DF4-B2C8-3FBE4B88672B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8C3AD6-60AF-4DF4-B2C8-3FBE4B88672B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A8C3AD6-60AF-4DF4-B2C8-3FBE4B88672B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F242582-9D45-45B3-8E73-72519D929EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F242582-9D45-45B3-8E73-72519D929EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F242582-9D45-45B3-8E73-72519D929EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F242582-9D45-45B3-8E73-72519D929EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FB708B-D737-4B82-849A-DA29A4880F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FB708B-D737-4B82-849A-DA29A4880F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FB708B-D737-4B82-849A-DA29A4880F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FB708B-D737-4B82-849A-DA29A4880F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BAF77F1-382A-4D91-B0E8-6B68E9898A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BAF77F1-382A-4D91-B0E8-6B68E9898A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BAF77F1-382A-4D91-B0E8-6B68E9898A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BAF77F1-382A-4D91-B0E8-6B68E9898A55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48EF7DCE-8781-468A-AD90-670FCD916F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48EF7DCE-8781-468A-AD90-670FCD916F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48EF7DCE-8781-468A-AD90-670FCD916F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48EF7DCE-8781-468A-AD90-670FCD916F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A0FD72E-029B-454D-8E4A-B9683777E3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0FD72E-029B-454D-8E4A-B9683777E3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0FD72E-029B-454D-8E4A-B9683777E3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0FD72E-029B-454D-8E4A-B9683777E3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A8126A9-7DC6-405E-BB2B-83E04E827101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A8126A9-7DC6-405E-BB2B-83E04E827101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A8126A9-7DC6-405E-BB2B-83E04E827101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A8126A9-7DC6-405E-BB2B-83E04E827101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1666014B-95BF-44A0-B0BC-23D9576E5590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1666014B-95BF-44A0-B0BC-23D9576E5590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1666014B-95BF-44A0-B0BC-23D9576E5590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1666014B-95BF-44A0-B0BC-23D9576E5590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B433A59E-563A-4353-BBF9-FA2A35C895E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B433A59E-563A-4353-BBF9-FA2A35C895E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B433A59E-563A-4353-BBF9-FA2A35C895E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B433A59E-563A-4353-BBF9-FA2A35C895E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B196F157-E7C8-4C37-A58E-2F51F8DB0227} = {7418A950-1BF0-4855-94B2-C7D2E5460F31}
+		{50B513B5-1218-4D50-AF2C-C1F9356FE28F} = {3D03A540-820E-410B-838C-09AC4E026D08}
+		{47DA6839-7C07-4E2A-8618-D664758F192E} = {38A4BA99-4529-4BB6-A39B-1EEB7A39A96F}
+		{6A8C3AD6-60AF-4DF4-B2C8-3FBE4B88672B} = {DF5885BB-F457-41B3-B6A6-43AA5724162E}
+		{67FB708B-D737-4B82-849A-DA29A4880F96} = {E0B4DCC0-5BAD-4733-901C-F56C181F6FBC}
+		{6BAF77F1-382A-4D91-B0E8-6B68E9898A55} = {8BE2684A-A08B-4940-9E33-181561C027CB}
+		{48EF7DCE-8781-468A-AD90-670FCD916F7A} = {A0E5D0DF-4AA7-43A3-9CD0-965A7C898793}
+		{2A0FD72E-029B-454D-8E4A-B9683777E3F1} = {A0E5D0DF-4AA7-43A3-9CD0-965A7C898793}
+		{0A8126A9-7DC6-405E-BB2B-83E04E827101} = {45C06D83-CD50-45BC-A818-F94C3D8E5B3D}
+		{1666014B-95BF-44A0-B0BC-23D9576E5590} = {40119C9E-D275-4108-96DC-0D0D931104FC}
+		{B433A59E-563A-4353-BBF9-FA2A35C895E3} = {8E42DE49-B6D5-454F-B8C8-E28E7B6D57F8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98BFAF08-51D8-4DB1-83D7-9B90397C8A05}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		MCS.Jarvis.Integration.Base\MCS.Jarvis.Integration.Base.projitems*{50b513b5-1218-4d50-af2c-c1f9356fe28f}*SharedItemsImports = 5
+		MCS.Jarvis.Integration.Base\MCS.Jarvis.Integration.Base.projitems*{b196f157-e7c8-4c37-a58e-2f51f8db0227}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

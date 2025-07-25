@@ -1,0 +1,60 @@
+{
+  "Mercurius.Event.DelayedETAUpdate1": {
+    "sourceEntityName": "SRBdPassoutLoginfoArgus",
+    "sourceFieldSchema": "TDIPartner,TDIMarket",
+    "targetEntityName": "jarvis_passouts",
+    "fieldMappings": [
+      {
+        "sourceFieldSchema": "ETADelayedDateBDARGUS",
+        "isRequired": true,
+        "targetFieldSchema": "jarvis_delayedeta",
+        "targetFieldDataType": "DateTime",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null
+      },
+      {
+        "sourceFieldSchema": "ETADelayedDateBDARGUS",
+        "isRequired": true,
+        "targetFieldSchema": "jarvis_eta",
+        "targetFieldDataType": "DateTime",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null
+      },
+      {
+        "sourceFieldSchema": "Comments",
+        "isRequired": false,
+        "targetFieldSchema": "jarvis_reason",
+        "targetFieldDataType": "text",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null
+      }
+    ]
+  },
+  "Mercurius.Event.DelayedETAUpdate2": {
+    "sourceEntityName": "SrBreakdownEtaLogArgus",
+    "sourceFieldSchema": "LanguageCode",
+    "targetEntityName": "jarvis_passouttranslations",
+    "targetLookupEntity": "jarvis_passouttranslations",
+    "targetLookupEntityName": "jarvis_passouttranslationid",
+    "fieldMappings": [
+      {
+        "sourceFieldSchema": "Comments",
+        "isRequired": false,
+        "targetFieldSchema": "jarvis_etareason",
+        "targetFieldDataType": "text",
+        "targetAlternateKeys": null,
+        "targetLookupEntity": null
+      },
+      {
+        "sourceFieldSchema": "LanguageCode",
+        "targetFieldSchema": "jarvis_Language",
+        "targetFieldLookupEntity": "jarvis_languages",
+        "targetFieldDataType": "Lookup",
+        "isRequired": true,
+        "targetAlternateKeys": "jarvis_mercuriuslanguagecode",
+        "targetLookupFieldValue": "jarvis_languageid",
+        "targetLookupEntity": "jarvis_languages"
+      }
+    ]
+  }
+}

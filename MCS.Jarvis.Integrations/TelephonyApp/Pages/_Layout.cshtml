@@ -1,0 +1,108 @@
+﻿<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT license.
+ -->
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@using Microsoft.Identity.Client
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> @ViewData["Title"]- TelephonyIntegration App</title>
+    <script src="~/lib/signalr/signalr.min.js"></script>
+    <script>
+        const funcNegRequestUrl = @Json.Serialize(@Configuration["funcNegUrl"]) + "?code=" + @Json.Serialize(@Configuration["funcNegKey"]);
+        (function () {
+
+            window.addEventListener("CIFInitDone", function () {
+                Microsoft.CIFramework.getEnvironment().then(function (res) {
+                    Microsoft.CIFramework.showProgressIndicator("Connecting to telephony server...");
+
+                    var crmUserId = JSON.parse(res).userId;
+                    var query = "?$select=jarvis_mitelagentid,_siteid_value&$filter=(systemuserid eq " + crmUserId + ")";
+                    Microsoft.CIFramework.searchAndOpenRecords("systemuser", query, true).then(
+                        function (result) {
+                            var resp = JSON.parse(result);
+                            if (resp[0] != null) {
+                                var _mitelAgentId = resp[0].jarvis_mitelagentid;
+                                var siteId = resp[0]._siteid_value;
+                                if (_mitelAgentId == null || _mitelAgentId == "") {
+                                    showErrorNotification("Your user account must have a Mitel Agent Id. You might not receive notification from Damovo Agent.");
+                                    Microsoft.CIFramework.closeProgressIndicator();
+                                    retrun;
+                                }
+
+                                const signalrconnection = new signalR.HubConnectionBuilder()
+                                    .withUrl(funcNegRequestUrl, {
+                                        headers: {
+                                            "mitelAgentId": _mitelAgentId
+                                        }
+                                    })
+                                    .withAutomaticReconnect()
+                                    .configureLogging(signalR.LogLevel.Information)
+                                    .build();
+
+                                async function start() {
+                                    try {
+                                        await signalrconnection.start();
+                                        showToastNotification("Connection with telephony server successfully established...", "", crmUserId, 100000001)
+                                        console.log("SignalR Connected");
+                                    }
+                                    catch (err) {
+                                        showErrorNotification("The application fails to connect to telephony server. You might not receive notification from Damovo Agent. Try refreching your browser to resolve the problem. Please contact your administrator, if the problem persist.");
+                                        console.log("Error occured when connecting to SignalR : ", err);
+                                    }
+                                };
+
+                                start();
+
+                                signalrconnection.on("onMitelNotify", (msgJson) => {
+                                    if (msgJson != null) {
+                                        msgJson["userId"] = crmUserId;
+                                        createagentsession(msgJson);
+                                    }
+                                });
+
+                                signalrconnection.onclose(err => {
+                                    console.log('SignalR Disconnected du to error :', err)
+                                    showErrorNotification("The application has lost connectivity to telephony server. You might not receive notification from Damovo Agent. Try refreching your browser to resolve the problem. Please contact your administrator, if the problem persist.");
+                                })
+                                signalrconnection.onreconnecting(err => {
+                                    console.log('Error occured when reconnecting to SignalR : ', err)
+                                })
+
+                                Microsoft.CIFramework.closeProgressIndicator();
+                            }
+
+                        },
+                        function (error) {
+                            console.log(error.message);
+                        }
+                    );
+                });
+
+
+            });
+        })();
+    </script>
+</head>
+<body>
+    @RenderBody()
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script type="text/javascript" src="@Context.Request.Query["base"]/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="@Context.Request.Query["base"]" data-cifid="CIFMainLibrary"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
